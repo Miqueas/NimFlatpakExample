@@ -1,0 +1,29 @@
+app-id: io.github.Miqueas.NimFlatpakExample
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk//21.08
+command: io.github.Miqueas.NimFlatpakExample
+modules:
+  - name: nim
+    buildsystem: simple
+    build-commands:
+      # the downloaded archive is automatically unpacked
+      # and used as current working dir
+      - sh install.sh /app
+    sources:
+      - type: archive
+        url: https://nim-lang.org/download/nim-1.6.4-linux_x64.tar.xz
+        sha256: 23bcadd15335f5eeac32f106254c4fd8e3e089ce62b29d6820af75a2cc655e20
+
+  - name: main
+    buildsystem: simple
+    build-commands:
+      # all nim binaries are in /app/nim/bin
+      - /app/nim/bin/nim c main.nim
+      - install -D io.github.Miqueas.NimFlatpakExample /app/bin/io.github.Miqueas.NimFlatpakExample
+    sources:
+      - type: file
+        path: main.nim
+      # need to allow nim use `nim.cfg`
+      - type: file
+        path: nim.cfg
