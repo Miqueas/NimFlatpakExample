@@ -13,6 +13,8 @@ modules:
     sources:
       - type: archive
         url: https://nim-lang.org/download/nim-1.6.4-linux_x64.tar.xz
+        # this checksum is from:
+        # https://nim-lang.org/download/nim-1.6.4-linux_x64.tar.xz.sha256
         sha256: 23bcadd15335f5eeac32f106254c4fd8e3e089ce62b29d6820af75a2cc655e20
 
   - name: main
