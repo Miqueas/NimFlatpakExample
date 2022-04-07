@@ -26,6 +26,7 @@ modules:
     sources:
       - type: file
         path: main.nim
-      # need to allow nim use `nim.cfg`
+      # this is mandatory to allow nim use `nim.cfg`
+      # (only if you're using a `nim.cfg` file)
       - type: file
         path: nim.cfg
